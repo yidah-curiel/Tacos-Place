@@ -10,4 +10,4 @@ install: skip
 cache: pip
 # cache content that does not often change, to speed up your build process. 
 
-script: python app_test.py # run tests
+# script: python app_test.py # run tests

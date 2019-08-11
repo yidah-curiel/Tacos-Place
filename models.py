@@ -2,14 +2,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Solution(db.Model):
-    __tablename__ = 'solutions'
+class Dish(db.Model):
+ #   __tablename__ = 'dishes'
+# table name is automatically set for you unless overridden. It’s derived from the class name converted to lowercase and with “CamelCase” converted to “camel_case”. 
     id = db.Column(db.Integer, primary_key=True)
-    board = db.Column(db.Text) #  string is for short texts (when storing single list boards) & text used for large blocks of text (matrix boards)
-    n = db.Column(db.Integer)
-    total = db.Column(db.Integer)
+    name = db.Column(db.String(20), unique=True, nullable=False) #  string is for short texts (when storing single list boards) & text used for large blocks of text (matrix boards)
+    description = db.Column(db.Text)
+  #  picture = db.Column(db.String(15))
+    price = db.Column(db.Integer, nullable=False)
+    category = db.Column(db.String(15), nullable=False)
 
-#Defining the solution model, with columns storing solutions along with it's corresponding N and total amount of solutions for testing
 
 #Defining how our data will be represented
  #   def __repr__(self):

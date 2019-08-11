@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>nQueens</title>
+    <title>Taco's Place</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">  
@@ -11,31 +11,32 @@
       
     <div class="container">
 
-        <h1 class="display-4 mb-4 mt-4">Solutions</h1>
-        
+      <div>
+        <h1 class="display-4 mb-4 mt-4" style="display: inline-block">Dishes</h1>
+        <a href="{{url_for('add_dishes')}}" 
+            class="btn btn-primary float-right"
+            style="position: relative; bottom: -50px">Add Dishes</a>
+    </div>
+
         <table class='table'>
-            <thead>
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for dish in dishes %}
                 <tr>
-                    <th>N of Queens</th>
-                    <th>Total Solutions</th>
-                    <th>Solution Board</th>
+                        <td>{{dish.name}}</td>
+                        <td>{{dish.description}}</td>
+                        <td>${{dish.price}}</td>
+                        <td>{{dish.category}}</td>
                 </tr>
-            </thead>
-            {% for x in solutions %}
-            <tbody>      
-                    <tr>
-                            <td>{{x.n}}</td>
-                            <td>{{x.total}}</td>
-                    </tr>  
-                    {% for i in x.board %}
-                    <tr>     
-                            <td>   </td> 
-                            <td>   </td> 
-                            <td>{{i}}</td>
-                    </tr>
-                    {% endfor %}
-            </tbody>
-            {% endfor %}
+                {% endfor %}
+        </tbody>
         </table>
         
     </div>
